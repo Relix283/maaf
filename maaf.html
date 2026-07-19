@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maaf ya... 🥺❤️</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Custom Glowing Effects */
+        .text-glow-pink {
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+        }
+        .shadow-glow-rose {
+            box-shadow: 0 0 25px rgba(244, 63, 94, 0.4);
+        }
+        /* Smooth Hide Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e11d48;
+            border-radius: 10px;
+        }
+        /* Floating Animation for Hearts */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .heart-particle {
+            position: absolute;
+            bottom: 0;
+            pointer-events: none;
+            animation: floatUp linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-slate-200 min-h-screen overflow-x-hidden relative">
+
+    <!-- BACKGROUND MUSIC (Instrumental Piano) -->
+    <audio id="bg-music" src="music.mp3" loop></audio>
+
+    <!-- FLOATING AUDIO CONTROL -->
+    <button id="music-toggle" class="fixed top-6 right-6 z-50 bg-slate-800/80 backdrop-blur-md border border-rose-500/30 text-rose-400 p-3 rounded-full shadow-lg hover:scale-110 transition hidden animate-pulse">
+        <i id="music-icon" class="fas fa-volume-up"></i>
+    </button>
+
+    <!-- ENTRY OVERLAY -->
+    <div id="entry-overlay" class="fixed inset-0 bg-[#0f172a] z-50 flex flex-col justify-center items-center p-4 transition-opacity duration-1000">
+        <div class="text-center space-y-6 max-w-sm">
+            <div class="w-20 h-20 bg-rose-500/10 rounded-full flex items-center justify-center mx-auto border border-rose-500/30 animate-pulse">
+                <i class="fas fa-envelope-open-text text-3xl text-rose-400"></i>
+            </div>
+            <h2 class="text-xl font-medium tracking-wide">Ada surat kecil buat kamu...</h2>
+            <button id="btn-open-letter" class="w-full py-3 bg-gradient-to-r from-rose-500 to-pink-600 rounded-xl font-medium tracking-wide shadow-glow-rose hover:opacity-90 transition active:scale-95">
+                Buka Surat 💌
+            </button>
+        </div>
+    </div>
+
+    <!-- HEART CONTAINER FOR BG PARTICLES -->
+    <div id="heart-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 relative z-10">
+
+        <!-- 1. INTRO SECTION -->
+        <section id="intro" class="h-screen flex flex-col justify-center items-center text-center px-6 relative">
+            <div class="space-y-4 max-w-xl">
+                <h1 id="typing-text" class="text-3xl md:text-5xl font-bold text-white text-glow-pink tracking-tight min-h-[60px]"></h1>
+                <p id="sub-text" class="text-base md:text-lg text-slate-400 opacity-0 transition-opacity duration-1000 delay-500 font-light"></p>
+            </div>
+            <div class="absolute bottom-10 animate-bounce text-slate-500 flex flex-col items-center space-y-2">
+                <span class="text-xs uppercase tracking-widest font-light">Scroll ke bawah ya</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- 2. STORY SECTION -->
+        <section id="story" class="py-32 max-w-2xl mx-auto px-6 space-y-20 relative">
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-rose-500/0 via-rose-500/20 to-rose-500/0"></div>
+            
+            <div class="reveal-item opacity-0 transform translate-y-10 transition duration-1000 bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 relative shadow-xl">
+                <div class="absolute -left-3 top-9 w-6 h-6 bg-slate-900 border border-rose-500/40 rounded-full flex items-center justify-center text-xs text-rose-400 shadow-lg">1</div>
+                <p class="text-slate-300 leading-relaxed font-light">
+                    Maaf kalau belakangan ini aku sering bikin kamu kesel, sering gak peka, atau mungkin sempat ngeluarin kata-kata yang bikin hati kamu sakit. Aku bener-bener gak berniat begitu...
+                </p>
+            </div>
+
+            <div class="reveal-item opacity-0 transform translate-y-10 transition duration-1000 bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 relative shadow-xl">
+                <div class="absolute -left-3 top-9 w-6 h-6 bg-slate-900 border border-rose-500/40 rounded-full flex items-center justify-center text-xs text-rose-400 shadow-lg">2</div>
+                <p class="text-slate-300 leading-relaxed font-light">
+                    Aku sadar, ego aku kadang terlalu tinggi sampai lupa kalau ada hati selembut hati kamu yang harusnya aku jaga baik-baik, bukan malah aku kecewain. Aku nyesel banget.
+                </p>
+            </div>
+
+            <div class="reveal-item opacity-0 transform translate-y-10 transition duration-1000 bg-slate-900/60 backdrop-blur-md p-8 rounded-2xl border border-slate-800 relative shadow-xl">
+                <div class="absolute -left-3 top-9 w-6 h-6 bg-slate-900 border border-rose-500/40 rounded-full flex items-center justify-center text-xs text-rose-400 shadow-lg">3</div>
+                <p class="text-slate-300 leading-relaxed font-light">
+                    Lewat tulisan sederhana ini, aku janji bakal terus berusaha belajar dengerin kamu lebih baik, nurunin ego aku, dan berusaha jadi versi terbaik buat kamu ke depannya.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. MEMORY SECTION -->
+        <section id="memory" class="py-24 max-w-5xl mx-auto px-6 text-center">
+            <div class="space-y-2 mb-12">
+                <h2 class="text-2xl md:text-3xl font-semibold text-white tracking-wide">Momen yang Ga Bakal Aku Lupain ✨</h2>
+                <p class="text-sm text-slate-400 font-light">Setiap detik bareng kamu itu terlalu berharga untuk berakhir gini aja.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 (Image) -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-slate-800 shadow-lg border border-slate-700/50">
+                    <img src="foto1.jpg" alt="Memory 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out filter brightness-75 group-hover:brightness-50">
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-left opacity-80 group-hover:opacity-100 transition duration-300 bg-gradient-to-t from-slate-950 via-transparent to-transparent">
+                        <p class="text-xs uppercase text-rose-400 tracking-wider font-semibold mb-1">Our Laughs</p>
+                        <h3 class="text-base font-medium text-white">Bahagia pas lagi berdua</h3>
+                    </div>
+                </div>
+
+                <!-- Card 2 (VIDEO MEMORY) -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-slate-800 shadow-lg border border-slate-700/50">
+                    <video src="vid1.mp4" autoplay loop muted playsinline class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out filter brightness-75 group-hover:brightness-50"></video>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-left opacity-80 group-hover:opacity-100 transition duration-300 bg-gradient-to-t from-slate-950 via-transparent to-transparent">
+                        <p class="text-xs uppercase text-rose-400 tracking-wider font-semibold mb-1">Video Memory</p>
+                        <h3 class="text-base font-medium text-white">Tempat ternyaman aku pulang</h3>
+                    </div>
+                </div>
+
+                <!-- Card 3 (Image) -->
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-slate-800 shadow-lg border border-slate-700/50">
+                    <img src="foto2.jpg" alt="Memory 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out filter brightness-75 group-hover:brightness-50">
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-left opacity-80 group-hover:opacity-100 transition duration-300 bg-gradient-to-t from-slate-950 via-transparent to-transparent">
+                        <p class="text-xs uppercase text-rose-400 tracking-wider font-semibold mb-1">The Journey</p>
+                        <h3 class="text-base font-medium text-white">Saling genggam lewatin semuanya</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ENDING SECTION -->
+        <section id="ending" class="h-screen flex flex-col justify-center items-center text-center px-6 relative max-w-xl mx-auto">
+            <div id="question-box" class="bg-slate-900/40 backdrop-blur-lg border border-slate-800 p-10 rounded-3xl w-full shadow-2xl space-y-8 transition-all duration-500">
+                <div id="box-content-asking" class="space-y-8">
+                    <div class="text-5xl animate-bounce">🥺👉👈</div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white tracking-wide">Kamu mau maafin aku?</h2>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 items-center justify-center relative min-h-[120px] sm:min-h-[60px]">
+                        <button id="btn-no" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 text-slate-400 rounded-xl font-medium tracking-wide border border-slate-700 transition-all duration-200 order-2 sm:order-1 sm:absolute">
+                            Engga 😤
+                        </button>
+                        <button id="btn-yes" class="px-8 py-3 bg-gradient-to-r from-rose-500 to-pink-600 text-white rounded-xl font-medium tracking-wide shadow-glow-rose hover:scale-110 active:scale-95 transition-all duration-300 order-1 sm:order-2 sm:relative z-20">
+                            Iya ❤️
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Success Screen Content -->
+                <div id="box-content-success" class="hidden space-y-6 py-6 animate-fade-in">
+                    <div class="text-6xl text-rose-500 filter drop-shadow-[0_0_15px_rgba(244,63,94,0.6)]">💖🥰✨</div>
+                    <h2 class="text-3xl font-bold text-white tracking-wide text-glow-pink">Makasih ya sayang!</h2>
+                    <p id="success-message" class="text-slate-300 font-light leading-relaxed mb-4"></p>
+                    
+                    <!-- WHATSAPP REDIRECT BUTTON -->
+                    <div class="pt-2">
+                        <a id="btn-send-wa" href="#" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-medium tracking-wide shadow-lg shadow-emerald-950/50 hover:scale-105 active:scale-95 transition-all duration-300">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            Kabar Kesini Ya Sayang Semuanya 💬
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ==========================================
+        // 🛠️ CONFIG / PERSONALIZATION (UBAH DISINI)
+        // ==========================================
+        const namaPacar = "Jaza az-zahra tunggadewi iskandar putri"; // <--- Ganti Nama Pacar
+        const nomorWA = "6285771466257"; // <--- Tulis nomor WA kamu disini (Wajib pakai kode negara 62 di depan, tanpa spasi/tanda +)
+        const pesanOtomatisWA = `Halo sayang, aku udah baca suratnya... Aku udah maafin kamu kok! 😘`; // <--- Isi chat otomatis ke WA kamu
+
+        // Dynamic strings injection
+        const introText = "Aku tau aku salah...";
+        const introSubText = `Dan aku ga mau kehilangan kamu, ${namaPacar}.`;
+        const successMessageText = `Makasih udah selalu punya hati yang luas buat maafin aku, ${namaPacar}. Aku janji bakal jaga hati kamu lebih baik lagi dari hari ini. I love you so much! 🫂❤️`;
+
+        // Elements Selection
+        const entryOverlay = document.getElementById('entry-overlay');
+        const mainContent = document.getElementById('main-content');
+        const btnOpenLetter = document.getElementById('btn-open-letter');
+        const audio = document.getElementById('bg-music');
+        const musicToggle = document.getElementById('music-toggle');
+        const musicIcon = document.getElementById('music-icon');
+        const typingElement = document.getElementById('typing-text');
+        const subTextElement = document.getElementById('sub-text');
+        const btnNo = document.getElementById('btn-no');
+        const btnYes = document.getElementById('btn-yes');
+        const boxAsking = document.getElementById('box-content-asking');
+        const boxSuccess = document.getElementById('box-content-success');
+        const successMessageEl = document.getElementById('success-message');
+        const heartContainer = document.getElementById('heart-container');
+        const btnSendWa = document.getElementById('btn-send-wa');
+
+        // =========================
+        // INITIALIZE SITE & AUDIO
+        // =========================
+        btnOpenLetter.addEventListener('click', () => {
+            entryOverlay.classList.add('opacity-0', 'pointer-events-none');
+            mainContent.classList.remove('opacity-0');
+            musicToggle.classList.remove('hidden');
+            
+            // Play Audio
+            audio.volume = 0.4;
+            audio.play().catch(err => console.log("Playback prevented: ", err));
+
+            setTimeout(startTypingAnimation, 800);
+            startHeartEngine();
+        });
+
+        // ==========================================
+        // 🎵 MUSIC TOGGLE INTERACTION (PLAY/PAUSE)
+        // ==========================================
+        musicToggle.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.className = "fas fa-volume-up";
+                musicToggle.classList.add('animate-pulse');
+                musicToggle.classList.remove('border-slate-600', 'text-slate-500');
+                musicToggle.classList.add('border-rose-500/30', 'text-rose-400');
+            } else {
+                audio.pause();
+                musicIcon.className = "fas fa-volume-mute";
+                musicToggle.classList.remove('animate-pulse');
+                musicToggle.classList.remove('border-rose-500/30', 'text-rose-400');
+                musicToggle.classList.add('border-slate-600', 'text-slate-500');
+            }
+        });
+
+        // =========================
+        // TYPING ANIMATION (INTRO)
+        // =========================
+        function startTypingAnimation() {
+            let index = 0;
+            typingElement.innerHTML = "";
+            
+            function type() {
+                if (index < introText.length) {
+                    typingElement.innerHTML += introText.charAt(index);
+                    index++;
+                    setTimeout(type, 100);
+                } else {
+                    subTextElement.innerHTML = introSubText;
+                    subTextElement.classList.remove('opacity-0');
+                }
+            }
+            type();
+        }
+
+        // =========================
+        // SCROLL REVEAL ENGINE
+        // =========================
+        const revealItems = document.querySelectorAll('.reveal-item');
+        const observerOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealItems.forEach(item => observer.observe(item));
+
+        // =========================
+        // INTERACTIVE "NO" BUTTON (RUNS AWAY)
+        // =========================
+        function moveButton() {
+            const padding = 25;
+            const maxX = window.innerWidth - btnNo.offsetWidth - padding;
+            const maxY = window.innerHeight - btnNo.offsetHeight - padding;
+
+            let randomX = Math.floor(Math.random() * maxX);
+            let randomY = Math.floor(Math.random() * maxY);
+
+            randomX = Math.max(padding, randomX);
+            randomY = Math.max(padding, randomY);
+
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${randomX}px`;
+            btnNo.style.top = `${randomY}px`;
+        }
+
+        btnNo.addEventListener('mouseenter', moveButton);
+        btnNo.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // ==========================================
+        // ❤️ YES BUTTON ACTION & WHATSAPP SETUP
+        // ==========================================
+        btnYes.addEventListener('click', () => {
+            successMessageEl.innerHTML = successMessageText;
+
+            // Integrasikan link WhatsApp dengan text yang di-encode otomatis
+            const formattedMessage = encodeURIComponent(pesanOtomatisWA);
+            btnSendWa.href = `https://api.whatsapp.com/send?phone=${nomorWA}&text=${formattedMessage}`;
+
+            boxAsking.classList.add('opacity-0');
+            setTimeout(() => {
+                boxAsking.classList.add('hidden');
+                boxSuccess.classList.remove('hidden');
+                boxSuccess.classList.add('opacity-100');
+                explodeHearts();
+            }, 300);
+        });
+
+        // =========================
+        // AMBIENT FLOATING HEARTS ENGINE
+        // =========================
+        const heartIcons = ['❤️', '💖', '💕', '✨', '💗'];
+
+        function createHeartParticle(isExplosion = false) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            heart.innerHTML = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            
+            const size = isExplosion ? Math.random() * 25 + 15 : Math.random() * 15 + 10;
+            const duration = isExplosion ? Math.random() * 2 + 1.5 : Math.random() * 4 + 3;
+            const leftPosition = Math.random() * 100;
+            
+            heart.style.fontSize = `${size}px`;
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.left = `${leftPosition}vw`;
+            
+            if (isExplosion) {
+                heart.style.bottom = `${Math.random() * 40 + 20}vh`;
+                heart.style.left = `${Math.random() * 80 + 10}vw`;
+                heart.style.animationName = 'floatUp';
+            }
+
+            heartContainer.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+
+        function startHeartEngine() {
+            setInterval(() => {
+                if (document.hidden) return;
+                createHeartParticle(false);
+            }, 400);
+        }
+
+        function explodeHearts() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => { createHeartParticle(true); }, i * 40);
+            }
+        }
+    </script>
+</body>
+</html>
